@@ -1,4 +1,5 @@
 #include "fraction.h"
+#include <stdio.h>
 
 Fraction add ( Fraction a, Fraction b ) {
   int re_num = a.num * b.den + a.den * b.num;
@@ -21,8 +22,8 @@ Fraction add ( Fraction a, Fraction b ) {
 }
 
 Fraction multiply ( Fraction a, Fraction b ) {
-  int re_num = a.num * n.num;
-  int re_den = a.den * n.den;
+  int re_num = a.num * b.num;
+  int re_den = a.den * b.den;
 
   if (re_num == 0) {
     return (Fraction) {0,1};

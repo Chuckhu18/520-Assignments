@@ -20,10 +20,10 @@ Imaginary add ( Imaginary a, Imaginary b );
 
 Imaginary multiply ( Imaginary a, Imaginary b );
 
-Imaginary negate ( Imaginary a, Imaginary b );
+Imaginary negate ( Imaginary a);
 
 Imaginary conjugate ( Imaginary a, Imaginary b );
 
-Imaginary magnitude ( Imaginary a, Imaginary b );
+Imaginary magnitude ( Imaginary a);
 
 #endif

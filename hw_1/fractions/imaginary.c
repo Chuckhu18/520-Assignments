@@ -1,15 +1,22 @@
-#include "imaginary.h"
+#include "Imaginary.h"
+#include <math.h>
 
 Imaginary add ( Imaginary a, Imaginary b ) {
     return (Imaginary) { a.real + b.real, a.im + b.im };
 }
 
 Imaginary multiply ( Imaginary a, Imaginary b ) {
-    return (Imaginary ) {a.real*b.real - a.img*b.img, c.img = a.img*b.real + a.real*b.img;}
+    return (Imaginary) {a.real*b.real - a.im*b.im, a.im*b.real + a.real*b.im};
 }
 
-Imaginary negate ( Imaginary a, Imaginary b );
+Imaginary negate ( Imaginary a ){
+    return (Imaginary) {-a.real, -a.im};
+}
 
-Imaginary conjugate ( Imaginary a, Imaginary b );
+Imaginary magnitude ( Imaginary a ){
+    return (Imaginary) {sqrt(a.real*a.real + a.im*a.im)};
+}
 
-Imaginary magnitude ( Imaginary a, Imaginary b );
+Imaginary conjugate ( Imaginary a ) {
+    return (Imaginary) {a.real, -a.im};
+}
