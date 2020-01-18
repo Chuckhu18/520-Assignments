@@ -22,8 +22,8 @@ Imaginary multiply ( Imaginary a, Imaginary b );
 
 Imaginary negate ( Imaginary a);
 
-Imaginary conjugate ( Imaginary a, Imaginary b );
+Imaginary conjugate ( Imaginary a);
 
-Imaginary magnitude ( Imaginary a);
+double magnitude ( Imaginary a);
 
 #endif
