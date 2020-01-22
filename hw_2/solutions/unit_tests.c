@@ -3,12 +3,56 @@
 
 namespace {
     //=======Tests for Fractions==============
-    TEST(Fractions, Basics) {
-        Fraction a = (Fraction) { 2, 3 },
-                 b = (Fraction) { 4, 5 };
-        EXPECT_EQ(add(a,b).num,22);
-        EXPECT_EQ(add(a,b).den,15);
-        EXPECT_EQ(multiply(a,b).num,8);
-        EXPECT_EQ(multiply(a,b).den,15);
+    TEST(HW2,RunningTotal) {
+        ASSERT_EQ(running_total(1),  1);
+        ASSERT_EQ(running_total(1),  2);
+        ASSERT_EQ(running_total(5),  7);
+        ASSERT_EQ(running_total(-3), 4);
     }
+
+    TEST(HW2,ReverseInPlace) {
+        int x[] = {10,20,30,40,50};
+        reverse_in_place(x,5);
+        ASSERT_EQ(x[0],50);
+        ASSERT_EQ(x[1],40);
+        ASSERT_EQ(x[2],30);
+        ASSERT_EQ(x[3],20);
+        ASSERT_EQ(x[4],10);
+    }
+
+    TEST(HW2,Reverse) {
+        int x[] = {10,20,30,40,50};
+        int * y = reverse(x,5);
+        ASSERT_EQ(y[0],50);
+        ASSERT_EQ(y[1],40);
+        ASSERT_EQ(y[2],30);
+        ASSERT_EQ(y[3],20);
+        ASSERT_EQ(y[4],10);
+        free(y);
+
+    }
+/*    
+    TEST(HW2,NumInstances) {
+        int a[] = { 1, 1, 2, 3, 1, 4, 5, 2, 20, 5 };
+        ASSERT_EQ(num_instances(a,10,1), 3);
+    }
+
+    TEST(HW2,Reverse) {
+        int x[] = {10,20,30,40,50};
+        int * y = reverse(x,5);
+        ASSERT_EQ(y[0],50);
+        ASSERT_EQ(y[1],40);       
+        ASSERT_EQ(y[2],30);   
+        ASSERT_EQ(y[3],20);   
+        ASSERT_EQ(y[4],10);  
+        free(y);
+    }
+
+    TEST(HW2,NumInstances) {
+        int a[] = { 1, 1, 2, 3, 1, 4, 5, 2, 20, 5 };
+        ASSERT_EQ(num_instances(a,10,1), 3);
+    }
+*/
+
+
 }
