@@ -11,4 +11,6 @@ void reverse_in_place(int x[], int len);
 
 int * reverse(int x[], int len);
 
+int num_instances(int a[], int len, int value);
+
 #endif

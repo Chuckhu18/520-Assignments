@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 
 namespace {
-    //=======Tests for Fractions==============
+
     TEST(HW2,RunningTotal) {
         ASSERT_EQ(running_total(1),  1);
         ASSERT_EQ(running_total(1),  2);
@@ -31,28 +31,13 @@ namespace {
         free(y);
 
     }
-/*    
+    
     TEST(HW2,NumInstances) {
         int a[] = { 1, 1, 2, 3, 1, 4, 5, 2, 20, 5 };
         ASSERT_EQ(num_instances(a,10,1), 3);
+        ASSERT_EQ(num_instances(a,10,10), 0);
+        ASSERT_EQ(num_instances(a,10,20), 1);
+        ASSERT_EQ(num_instances(a,10,5), 2);
     }
-
-    TEST(HW2,Reverse) {
-        int x[] = {10,20,30,40,50};
-        int * y = reverse(x,5);
-        ASSERT_EQ(y[0],50);
-        ASSERT_EQ(y[1],40);       
-        ASSERT_EQ(y[2],30);   
-        ASSERT_EQ(y[3],20);   
-        ASSERT_EQ(y[4],10);  
-        free(y);
-    }
-
-    TEST(HW2,NumInstances) {
-        int a[] = { 1, 1, 2, 3, 1, 4, 5, 2, 20, 5 };
-        ASSERT_EQ(num_instances(a,10,1), 3);
-    }
-*/
-
 
 }

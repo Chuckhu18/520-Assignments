@@ -30,3 +30,14 @@ int * reverse(int x[], int len){
 
   return arr;
 }
+
+
+int num_instances(int a[], int len, int value){
+  int count = 0;
+  for(int i =0; i<len; i++){
+    if(a[i]==value)
+      count++;
+  }
+
+  return count;
+}
