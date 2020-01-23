@@ -14,6 +14,9 @@ typedef enum {
     DIVIDE_BY_ZERO_ERROR
 } RPN_ERROR;
 
+bool rpn_check_stack_exceed();
+int rpn_check_stack_size();
+void rpn_reallocate_double_size();
 void rpn_init();
 void rpn_push(double x);
 void rpn_add();
@@ -23,5 +26,6 @@ void rpn_div();
 double rpn_pop();
 RPN_ERROR rpn_error();
 void rpn_free();
+
 
 #endif

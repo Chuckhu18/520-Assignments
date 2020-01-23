@@ -10,6 +10,24 @@ static int initialized = 0;
 static int top = 0;
 static RPN_ERROR error = OK;
 
+/*
+static int stuck_size *= 2;
+
+bool rpn_check_stack_exceed(){
+    if (top > 100)
+        return true;
+    return false;
+}
+
+int rpn_check_stack_size(){
+    return stuck_size;
+}
+
+void rpn_reallocate_double_size(){
+    stack = (double *) realloc(stack, 2*rpn_check_stack_size()*sizeof(double));
+}
+*/
+
 void rpn_show() {
     printf("--->\n");
     for ( int i=0; i<top; i++ ) {
