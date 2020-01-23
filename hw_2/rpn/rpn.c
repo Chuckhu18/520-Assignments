@@ -9,24 +9,11 @@ static double * stack;
 static int initialized = 0;
 static int top = 0;
 static RPN_ERROR error = OK;
+static int stuck_size = 0;
 
-/*
-static int stuck_size *= 2;
-
-bool rpn_check_stack_exceed(){
-    if (top > 100)
-        return true;
-    return false;
-}
-
-int rpn_check_stack_size(){
-    return stuck_size;
-}
-
-void rpn_reallocate_double_size(){
-    stack = (double *) realloc(stack, 2*rpn_check_stack_size()*sizeof(double));
-}
-*/
+// void rpn_reallocate_double_size(){
+//     stack = (double *) realloc(stack, 2*stuck_size*sizeof(double));
+// }
 
 void rpn_show() {
     printf("--->\n");
@@ -38,6 +25,7 @@ void rpn_show() {
 
 void rpn_init() {
   if ( ! initialized ) {
+      stuck_size = INITIAL_STACK_SIZE;
       stack = (double *) calloc(INITIAL_STACK_SIZE, sizeof(double));
       initialized = 1;
       top = 0;
@@ -46,6 +34,10 @@ void rpn_init() {
 }
 
 void rpn_push(double x) {
+    if (top==stuck_size){
+        stack = (double *) realloc(stack, 2*stuck_size*sizeof(double));
+        stuck_size *= 2;
+    }
     if ( !initialized ) {
         error = NOT_INITIALIZED_ERROR;
     } else {

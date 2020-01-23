@@ -94,12 +94,12 @@ namespace {
         rpn_free();        
 
     }    
-/*
+
     TEST(HW2,RPN_REALLOCATE) {
         rpn_init();
         for (int i=0; i<200; i++)
             rpn_push(i);
+        ASSERT_EQ(rpn_pop(),199);
         rpn_free();
     }
-*/
 }
