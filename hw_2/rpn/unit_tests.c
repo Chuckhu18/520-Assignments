@@ -97,9 +97,9 @@ namespace {
 
     TEST(HW2,RPN_REALLOCATE) {
         rpn_init();
-        for (int i=0; i<200; i++)
+        for (int i=0; i<1000; i++)
             rpn_push(i);
-        ASSERT_EQ(rpn_pop(),199);
+        ASSERT_EQ(rpn_pop(),999);
         rpn_free();
     }
 }
