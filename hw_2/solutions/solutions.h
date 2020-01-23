@@ -13,4 +13,6 @@ int * reverse(int x[], int len);
 
 int num_instances(int a[], int len, int value);
 
+Point * map(Point a[], int len, Point (* f_ptr)(Point));
+
 #endif

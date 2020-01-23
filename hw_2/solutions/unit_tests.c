@@ -40,4 +40,19 @@ namespace {
         ASSERT_EQ(num_instances(a,10,5), 2);
     }
 
+    Point negate(Point p) {
+      return { -p.x, -p.y, -p.z };
+    }
+
+    TEST(HW2,PointMap) {
+      Point a[] = { { 1,2,3 }, { 2,3,4 } };
+      Point * b = map(a,2,negate);
+      for(int i=0; i<2; i++) {
+        ASSERT_EQ(b[i].x,-a[i].x);
+        ASSERT_EQ(b[i].y,-a[i].y);
+        ASSERT_EQ(b[i].z,-a[i].z);
+      }
+      free(b);
+    } 
+
 }

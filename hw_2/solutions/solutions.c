@@ -41,3 +41,15 @@ int num_instances(int a[], int len, int value){
 
   return count;
 }
+
+Point * map(Point a[], int len, Point (* f_ptr)(Point)){
+  Point * arr = (Point *) calloc(len,sizeof(Point));
+  for(int i = 0; i<len; i++){
+    arr[i] = (* f_ptr)(a[i]);
+    // printf("==============================%lf \n", arr[i].x);
+    // printf("==============================%lf \n", arr[i].y);
+    // printf("==============================%lf \n", arr[i].z);
+  }
+  
+  return arr;
+}

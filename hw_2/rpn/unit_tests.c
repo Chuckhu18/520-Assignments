@@ -16,6 +16,15 @@ namespace {
         rpn_free();
     }
 
+    TEST(HW2,RPN_DIVIDE) {
+        rpn_init();
+        rpn_push(2.0);
+        rpn_push(0.0);
+        rpn_div();
+        ASSERT_EQ(rpn_error(), DIVIDE_BY_ZERO_ERROR);
+        rpn_free();
+    }
+
     TEST(HW2,RPN_ERRORS) {
         
         rpn_push(0.5);

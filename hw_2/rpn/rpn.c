@@ -76,6 +76,25 @@ void rpn_multiply() {
     }
 }
 
+void rpn_div(){
+    if ( !initialized ) {
+        error = NOT_INITIALIZED_ERROR;
+    } else if ( top < 2 ) {
+        error = BINARY_ERROR;
+    } else if (stack[top-2] == 0){
+            error = DIVIDE_BY_ZERO_ERROR;
+    } else {
+        double x = stack[top-1]/stack[top-2];
+        if ( x == INFINITY || x == -INFINITY )
+            error = OVERFLOW_ERROR;
+
+        if ((stack[top-1] == DBL_MAX || stack[top-1] == -DBL_MAX) && stack[top-2]<1 && stack[top-2]>-1)
+            error = OVERFLOW_ERROR;
+        top--;
+        stack[top-1] = x;
+    }
+}
+
 double rpn_pop() { 
     if ( !initialized ) {
         error = NOT_INITIALIZED_ERROR;
