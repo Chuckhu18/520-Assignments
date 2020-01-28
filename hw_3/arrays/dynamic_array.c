@@ -180,3 +180,49 @@ DynamicArray * DynamicArray_subarray(DynamicArray * da, int a, int b) {
   return result;
 
 }
+
+double DynamicArray_min ( const DynamicArray * da ){
+    double min = DynamicArray_get(da, 0);
+    assert(DynamicArray_size(da) > 0);
+
+    for(int i=0; i< DynamicArray_size(da); i++){
+        if(DynamicArray_get(da, i)< min)
+            min = DynamicArray_get(da, i);
+    }
+    return min;
+}
+
+double DynamicArray_max ( const DynamicArray * da ){
+    double max = DynamicArray_get(da, 0);
+    assert(DynamicArray_size(da) > 0);
+
+    for(int i=0; i< DynamicArray_size(da); i++){
+        if(DynamicArray_get(da, i)> max)
+            max = DynamicArray_get(da, i);
+    }
+    return max;
+}
+
+double DynamicArray_mean ( const DynamicArray * da ){
+    assert(DynamicArray_size(da) > 0);
+
+    return DynamicArray_sum(da)/DynamicArray_size(da);
+}
+
+double DynamicArray_median ( const DynamicArray * da ){//assume the array is sorted
+    assert(DynamicArray_size(da) > 0);
+    double median = 0.0000;
+    if (DynamicArray_size(da)%2 == 1)
+        return DynamicArray_get(da, DynamicArray_size(da)/2);
+    return (DynamicArray_get(da, DynamicArray_size(da)/2) + DynamicArray_get(da, DynamicArray_size(da)/2 - 1))/2;
+}
+
+double DynamicArray_sum ( const DynamicArray * da ){
+    if (DynamicArray_size(da) == 0)
+        return 0.0000;
+    double sum = 0.0000;
+    for(int i=0; i<DynamicArray_size(da); i++){
+        sum += DynamicArray_get(da, i);
+    }
+    return sum;
+}

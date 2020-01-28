@@ -123,4 +123,21 @@ namespace {
         DynamicArray_destroy(y);                    
     }         
 
+    TEST(DynamicArray, mathematical_op) {
+        DynamicArray * da = DynamicArray_new();
+        DynamicArray_push(da, 1.0000);
+        DynamicArray_push(da, 2.0000);
+        DynamicArray_push(da, 3.0000);
+        DynamicArray_push(da, 4.0000);
+        ASSERT_EQ(DynamicArray_min(da), 1.0000);
+        ASSERT_EQ(DynamicArray_max(da), 4.0000);
+        ASSERT_EQ(DynamicArray_sum(da), 10.0000);
+        ASSERT_EQ(DynamicArray_mean(da), 2.5000);
+        ASSERT_EQ(DynamicArray_median(da), 2.5000);
+        DynamicArray_push(da, 5.0000);
+        ASSERT_EQ(DynamicArray_median(da), 3.0000);
+        
+        DynamicArray_destroy(da);
+    }
+
 }
