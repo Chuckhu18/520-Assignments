@@ -152,9 +152,18 @@ double DynamicArray_pop(DynamicArray * da) {
 
 double DynamicArray_pop_front(DynamicArray * da) {
     assert(DynamicArray_size(da) > 0);
-    double value = DynamicArray_get(da, 0);
+    double value = DynamicArray_last(da);
     da->origin++;
-    return value;    
+    return value;
+}
+
+double DynamicArray_first ( const DynamicArray * da ){
+    assert(DynamicArray_size(da) > 0);
+    return DynamicArray_get(da,DynamicArray_size(da)-1);
+}
+double DynamicArray_last ( const DynamicArray * da ){
+    assert(DynamicArray_size(da) > 0);
+    return DynamicArray_get(da, 0);
 }
 
 DynamicArray * DynamicArray_map(const DynamicArray * da, double (*f) (double)) {
@@ -178,7 +187,6 @@ DynamicArray * DynamicArray_subarray(DynamicArray * da, int a, int b) {
   }
 
   return result;
-
 }
 
 double DynamicArray_min ( const DynamicArray * da ){
@@ -225,4 +233,17 @@ double DynamicArray_sum ( const DynamicArray * da ){
         sum += DynamicArray_get(da, i);
     }
     return sum;
+}
+
+// DynamicArray * DynamicArray_copy ( const DynamicArray * da ){}
+
+DynamicArray * DynamicArray_range ( double a, double b, double step){
+    DynamicArray * re = DynamicArray_new();
+    double count = a;
+    while(count < b){
+        DynamicArray_push(re, count);
+        count += step;
+    }
+    DynamicArray_print_debug_info(re);
+    return re;
 }

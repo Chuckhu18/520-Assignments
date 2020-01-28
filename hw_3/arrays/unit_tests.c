@@ -76,7 +76,7 @@ namespace {
             DynamicArray_pop_front(da);
         }
         ASSERT_EQ(DynamicArray_size(da),0);
-        DynamicArray_destroy(da);          
+        DynamicArray_destroy(da);
     } 
 
     TEST(DynamnicArray,ToString) {
@@ -136,8 +136,40 @@ namespace {
         ASSERT_EQ(DynamicArray_median(da), 2.5000);
         DynamicArray_push(da, 5.0000);
         ASSERT_EQ(DynamicArray_median(da), 3.0000);
-        
+
         DynamicArray_destroy(da);
     }
+
+    TEST(DynamicArray, Last_First) {
+        DynamicArray * da = DynamicArray_new();
+        DynamicArray_push(da, 1.0000);
+        DynamicArray_push(da, 2.0000);
+        DynamicArray_push(da, 3.0000);
+        DynamicArray_push(da, 4.0000);
+        DynamicArray_push(da, 5.0000);
+        ASSERT_EQ(DynamicArray_last(da), 1.0000);
+        ASSERT_EQ(DynamicArray_first(da), 5.0000);
+        DynamicArray_destroy(da);
+    }
+
+/*
+    TEST(DynamicArray, Range_step) {
+        DynamicArray * da = DynamicArray_new();
+        DynamicArray_push(da, 0.0000);
+        DynamicArray_push(da, 0.1000);
+        DynamicArray_push(da, 0.2000);
+        DynamicArray_push(da, 0.3000);
+        DynamicArray_push(da, 0.4000);
+        DynamicArray_push(da, 0.5000);
+        DynamicArray_push(da, 0.6000);
+        DynamicArray_push(da, 0.7000);
+        DynamicArray_push(da, 0.8000);
+        DynamicArray_push(da, 0.9000);
+        DynamicArray_push(da, 1.0000);
+        DynamicArray_print_debug_info(da);
+        ASSERT_EQ(DynamicArray_range(0,1,0.1), da);
+        DynamicArray_destroy(da);
+    }
+    */
 
 }
