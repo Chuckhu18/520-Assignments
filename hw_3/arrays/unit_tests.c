@@ -173,8 +173,8 @@ namespace {
         // DynamicArray * da = DynamicArray_new();
         DynamicArray * range1= DynamicArray_range(0, 2.0, 0.1);
         DynamicArray * range2= DynamicArray_range(0, -2.0, -0.1);
-        // DynamicArray_print_debug_info(range1);
-        // DynamicArray_print_debug_info(range2);
+        DynamicArray_print_debug_info(range1);
+        DynamicArray_print_debug_info(range2);
 
         // ASSERT_EQ(range, da);
         // ASSERT_EQ(compare(da, range), 1);
@@ -195,11 +195,11 @@ namespace {
     }
 
     TEST(DynamicArray, Take) {
-        DynamicArray * a = DynamicArray_new();
-        DynamicArray * b = DynamicArray_new();
-        DynamicArray * c = DynamicArray_new();
-        DynamicArray * d = DynamicArray_new();
-        DynamicArray * e = DynamicArray_new();
+        DynamicArray * a = DynamicArray_new(),
+                    * b,
+                    * c,
+                    * d,
+                    * e;
 
         a = DynamicArray_range(1, 5, 1);
         b = DynamicArray_take(a, 2);  /* yields [ 1, 2 ] */

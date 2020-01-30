@@ -1,5 +1,4 @@
 #include "dynamic_array.h"
-// #include <bits/stdc++.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -104,7 +103,6 @@ void DynamicArray_print_debug_info(const DynamicArray * da) {
       DynamicArray_size(da));
 
     free(s);
-
 }
 
 void DynamicArray_set(DynamicArray * da, int index, double value) {
@@ -117,7 +115,6 @@ void DynamicArray_set(DynamicArray * da, int index, double value) {
     if ( index >= DynamicArray_size(da) ) {
         da->end = index_to_offset(da,index+1);
     }
-
 }
 
 double DynamicArray_get(const DynamicArray * da, int index) {
@@ -273,13 +270,15 @@ DynamicArray * DynamicArray_range ( double a, double b, double step){
             count += step;
             // printf("count:%lf, step:%lf\n", count, step);
         }
-    }else if(b < a && step <= 0) {//0, -1, -.1
+    }
+    if(b < a && step <= 0) {//0, -1, -.1
         while(count >= b){
             DynamicArray_push(re, count);
             count += step;
             // printf("count:%lf, step:%lf\n", count, step); 
         }
-    }else{return re;}
+    }
+
     return re;
 }
 
@@ -312,10 +311,7 @@ DynamicArray * DynamicArray_take(const DynamicArray * a, const int value) {
             for (int i=0; i < -value; i++)
                 DynamicArray_push_front(take_arr, DynamicArray_get(a, DynamicArray_size(a)-i-1));
         }
-        
-        
     }
-
     return take_arr;
 }
 

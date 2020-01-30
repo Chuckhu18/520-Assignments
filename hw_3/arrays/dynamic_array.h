@@ -78,15 +78,15 @@ void bubbleSort(DynamicArray * arr, int n);
 
 /*! Returns 1 if the array is valid (meaning its buffer is not NULL) and 0 otherwize.
  */
-int DynamicArray_is_valid(const DynamicArray * da);
+// int DynamicArray_is_valid(const DynamicArray * da);
 
 /*! Returns the number of arrays that have been constructed to far.
  */
-int DynamicArray_num_arrays();
+// int DynamicArray_num_arrays();
 
 /*! Destroys all arrays that have been constructed so far.
  */
-int DynamicArray_destroy_all();
+// int DynamicArray_destroy_all();
 
 DynamicArray * DynamicArray_subarray(DynamicArray *, int, int);
 
