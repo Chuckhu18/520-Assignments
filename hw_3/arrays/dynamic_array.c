@@ -273,7 +273,7 @@ DynamicArray * DynamicArray_range ( double a, double b, double step){
         count += step;
         // printf("count:%lf, step:%lf\n", count, step);
     }
-    DynamicArray_print_debug_info(re);
+    // DynamicArray_print_debug_info(re);
     return re;
 }
 
@@ -284,5 +284,32 @@ DynamicArray * DynamicArray_concat ( const DynamicArray * a, const DynamicArray 
         DynamicArray_push(concat, DynamicArray_pop_front(copy_b));
     }
     return concat;
+}
+
+DynamicArray * DynamicArray_take(const DynamicArray * a, const int value) {
+    DynamicArray * take_arr = DynamicArray_new();
+    int a_size = DynamicArray_size(a);// 5
+    if (value > 0){
+        for (int i=0; i < value; i++)
+            if(i < a_size){
+                DynamicArray_push(take_arr, DynamicArray_get(a,i));
+            }else{
+                DynamicArray_push(take_arr, 0);
+            }
+    }
+    if (value < 0){
+        if(-value > a_size){
+            for(int i=0; i < -value-a_size; i++)
+                DynamicArray_push_front(take_arr, 0);
+            take_arr = DynamicArray_concat(take_arr, a);
+        }else{
+            for (int i=0; i < -value; i++)
+                DynamicArray_push_front(take_arr, DynamicArray_get(a, DynamicArray_size(a)-i-1));
+        }
+        
+        
+    }
+
+    return take_arr;
 }
 

@@ -187,14 +187,40 @@ namespace {
         DynamicArray_destroy(range);
     }
 
-    // TEST(DynamicArray, Concat) {
-    //     DynamicArray * a = DynamicArray_range(0, 1, 0.1);
-    //     DynamicArray * b = DynamicArray_range(1.1, 2, 0.1);
-    //     DynamicArray * c = DynamicArray_concat(a, b);
-    //     DynamicArray_print_debug_info(c);
+    TEST(DynamicArray, Concat) {
+        DynamicArray * a = DynamicArray_range(0, 1, 0.1);
+        DynamicArray * b = DynamicArray_range(1.1, 2, 0.1);
+        DynamicArray * c = DynamicArray_concat(a, b);
+        DynamicArray_print_debug_info(c);
 
-    //     DynamicArray_destroy(a);
-    //     DynamicArray_destroy(b);
-    //     DynamicArray_destroy(c);
-    // }
+        DynamicArray_destroy(a);
+        DynamicArray_destroy(b);
+        DynamicArray_destroy(c);
+    }
+
+    TEST(DynamicArray, Take) {
+        DynamicArray * a = DynamicArray_new();
+        DynamicArray * b = DynamicArray_new();
+        DynamicArray * c = DynamicArray_new();
+        DynamicArray * d = DynamicArray_new();
+        DynamicArray * e = DynamicArray_new();
+
+        a = DynamicArray_range(1, 5, 1);
+        b = DynamicArray_take(a, 2);  /* yields [ 1, 2 ] */
+        c = DynamicArray_take(a, -2); /* yields [ 4, 5 ] */
+        d = DynamicArray_take(a, 7);  /* yields [ 1, 2, 3, 4, 5, 0, 0 ] */
+        e = DynamicArray_take(a, -7);  /* yields [0, 0, 1, 2, 3, 4, 5 ] */
+
+        // DynamicArray_print_debug_info(a);
+        // DynamicArray_print_debug_info(b);
+        // DynamicArray_print_debug_info(c);
+        // DynamicArray_print_debug_info(d);
+        // DynamicArray_print_debug_info(e);
+
+        DynamicArray_destroy(a);
+        DynamicArray_destroy(b);
+        DynamicArray_destroy(c);
+        DynamicArray_destroy(d);
+        DynamicArray_destroy(e);
+    }
 }
