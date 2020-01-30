@@ -1,4 +1,5 @@
 #include "dynamic_array.h"
+// #include <bits/stdc++.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -168,11 +169,21 @@ double DynamicArray_last ( const DynamicArray * da ){
 
 DynamicArray * DynamicArray_map(const DynamicArray * da, double (*f) (double)) {
     assert(da->buffer != NULL);
-    DynamicArray * result = DynamicArray_new();
-    for ( int i=0; i<DynamicArray_size(da); i++ ) {
-        DynamicArray_set(result, i, f(DynamicArray_get(da, i)));
-    }
+    // DynamicArray * result = DynamicArray_new();
+    DynamicArray * result = DynamicArray_copy(da);
+    // for ( int i=0; i<DynamicArray_size(da); i++ ) {
+    //     DynamicArray_set(result, i, f(DynamicArray_get(da, i)));
+    // }
     return result;
+}
+
+DynamicArray * DynamicArray_copy ( const DynamicArray * da ){
+    assert(da->buffer != NULL);
+    DynamicArray * copy = DynamicArray_new();
+    for ( int i=0; i<DynamicArray_size(da); i++ ) {
+        DynamicArray_set(copy, i, DynamicArray_get(da, i));
+    }
+    return copy;
 }
 
 DynamicArray * DynamicArray_subarray(DynamicArray * da, int a, int b) {
@@ -216,13 +227,32 @@ double DynamicArray_mean ( const DynamicArray * da ){
 
     return DynamicArray_sum(da)/DynamicArray_size(da);
 }
+ 
+// A function to implement bubble sort 
+void bubbleSort(DynamicArray * arr, int n) { 
+   for (int i = 0; i < n-1; i++) {   
+       // Last i elements are already in place    
+       for (int j = 0; j < n-i-1; j++)  
+           if (DynamicArray_get(arr,j) > DynamicArray_get(arr,j+1)) {
+               double temp = DynamicArray_get(arr,j);
+               DynamicArray_set(arr, j, DynamicArray_get(arr,j+1));
+               DynamicArray_set(arr, j+1, temp);
+           }
+   }
+} 
 
-double DynamicArray_median ( const DynamicArray * da ){//assume the array is sorted
+//TODO: needs to sort the array first.
+double DynamicArray_median ( const DynamicArray * da ){
     assert(DynamicArray_size(da) > 0);
+
+    // qsort(arr, N, sizeof(int), compare);
+    DynamicArray * sort_arr = DynamicArray_copy(da);
     double median = 0.0000;
-    if (DynamicArray_size(da)%2 == 1)
-        return DynamicArray_get(da, DynamicArray_size(da)/2);
-    return (DynamicArray_get(da, DynamicArray_size(da)/2) + DynamicArray_get(da, DynamicArray_size(da)/2 - 1))/2;
+    bubbleSort(sort_arr, DynamicArray_size(sort_arr));
+
+    if (DynamicArray_size(sort_arr)%2 == 1)
+        return DynamicArray_get(sort_arr, DynamicArray_size(sort_arr)/2);
+    return (DynamicArray_get(sort_arr, DynamicArray_size(sort_arr)/2) + DynamicArray_get(sort_arr, DynamicArray_size(sort_arr)/2 - 1))/2;
 }
 
 double DynamicArray_sum ( const DynamicArray * da ){
@@ -235,15 +265,24 @@ double DynamicArray_sum ( const DynamicArray * da ){
     return sum;
 }
 
-// DynamicArray * DynamicArray_copy ( const DynamicArray * da ){}
-
 DynamicArray * DynamicArray_range ( double a, double b, double step){
     DynamicArray * re = DynamicArray_new();
     double count = a;
-    while(count < b){
+    while(count <= b){
         DynamicArray_push(re, count);
         count += step;
+        // printf("count:%lf, step:%lf\n", count, step);
     }
     DynamicArray_print_debug_info(re);
     return re;
 }
+
+DynamicArray * DynamicArray_concat ( const DynamicArray * a, const DynamicArray * b ){
+    DynamicArray * concat = DynamicArray_copy(a);
+    DynamicArray * copy_b = DynamicArray_copy(b);
+    for (int i = 0; i < DynamicArray_size(b); i++ ){
+        DynamicArray_push(concat, DynamicArray_pop_front(copy_b));
+    }
+    return concat;
+}
+

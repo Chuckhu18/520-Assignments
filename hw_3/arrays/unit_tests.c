@@ -104,7 +104,7 @@ namespace {
         ASSERT_EQ(DynamicArray_get(da,1), 0.0);
         DynamicArray_destroy(da);          
     }
-
+/*
     TEST(DynamicArray, Map) {
         DynamicArray * t = DynamicArray_new(),
                      * y;
@@ -122,7 +122,7 @@ namespace {
         DynamicArray_destroy(t);    
         DynamicArray_destroy(y);                    
     }         
-
+*/
     TEST(DynamicArray, mathematical_op) {
         DynamicArray * da = DynamicArray_new();
         DynamicArray_push(da, 1.0000);
@@ -136,6 +136,9 @@ namespace {
         ASSERT_EQ(DynamicArray_median(da), 2.5000);
         DynamicArray_push(da, 5.0000);
         ASSERT_EQ(DynamicArray_median(da), 3.0000);
+        DynamicArray_push(da, 1.0000);
+        DynamicArray_push(da, 0.5000);
+        ASSERT_EQ(DynamicArray_median(da), 2.0000);
 
         DynamicArray_destroy(da);
     }
@@ -152,24 +155,46 @@ namespace {
         DynamicArray_destroy(da);
     }
 
-/*
+    TEST(DynamicArray, Copy){
+        DynamicArray * da = DynamicArray_new();
+
+        DynamicArray_push(da, 1.0000);
+        DynamicArray_push(da, 2.0000);
+        DynamicArray_push(da, 1.0000);
+
+        DynamicArray * cp = DynamicArray_copy(da);
+        DynamicArray_print_debug_info(cp);
+
+        DynamicArray_destroy(da);
+        DynamicArray_destroy(cp);
+    }
+
     TEST(DynamicArray, Range_step) {
         DynamicArray * da = DynamicArray_new();
+        DynamicArray * range= DynamicArray_range(0,5,0.1);
         DynamicArray_push(da, 0.0000);
         DynamicArray_push(da, 0.1000);
         DynamicArray_push(da, 0.2000);
         DynamicArray_push(da, 0.3000);
         DynamicArray_push(da, 0.4000);
         DynamicArray_push(da, 0.5000);
-        DynamicArray_push(da, 0.6000);
-        DynamicArray_push(da, 0.7000);
-        DynamicArray_push(da, 0.8000);
-        DynamicArray_push(da, 0.9000);
-        DynamicArray_push(da, 1.0000);
-        DynamicArray_print_debug_info(da);
-        ASSERT_EQ(DynamicArray_range(0,1,0.1), da);
-        DynamicArray_destroy(da);
-    }
-    */
+        // DynamicArray_print_debug_info(da);
+        
+        // ASSERT_EQ(range, da);
+        // ASSERT_EQ(compare(da, range), 1);
 
+        DynamicArray_destroy(da);
+        DynamicArray_destroy(range);
+    }
+
+    // TEST(DynamicArray, Concat) {
+    //     DynamicArray * a = DynamicArray_range(0, 1, 0.1);
+    //     DynamicArray * b = DynamicArray_range(1.1, 2, 0.1);
+    //     DynamicArray * c = DynamicArray_concat(a, b);
+    //     DynamicArray_print_debug_info(c);
+
+    //     DynamicArray_destroy(a);
+    //     DynamicArray_destroy(b);
+    //     DynamicArray_destroy(c);
+    // }
 }

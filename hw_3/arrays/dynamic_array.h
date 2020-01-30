@@ -73,6 +73,8 @@ double DynamicArray_max ( const DynamicArray * da );
 double DynamicArray_mean ( const DynamicArray * da );
 double DynamicArray_median ( const DynamicArray * da );
 double DynamicArray_sum ( const DynamicArray * da );
+// int compare(const void * a, const void * b) 
+void bubbleSort(DynamicArray * arr, int n);
 
 /*! Returns 1 if the array is valid (meaning its buffer is not NULL) and 0 otherwize.
  */
