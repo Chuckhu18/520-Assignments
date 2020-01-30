@@ -171,9 +171,9 @@ DynamicArray * DynamicArray_map(const DynamicArray * da, double (*f) (double)) {
     assert(da->buffer != NULL);
     // DynamicArray * result = DynamicArray_new();
     DynamicArray * result = DynamicArray_copy(da);
-    // for ( int i=0; i<DynamicArray_size(da); i++ ) {
-    //     DynamicArray_set(result, i, f(DynamicArray_get(da, i)));
-    // }
+    for ( int i=0; i<DynamicArray_size(da); i++ ) {
+        DynamicArray_set(result, i, f(DynamicArray_get(da, i)));
+    }
     return result;
 }
 
@@ -241,7 +241,6 @@ void bubbleSort(DynamicArray * arr, int n) {
    }
 } 
 
-//TODO: needs to sort the array first.
 double DynamicArray_median ( const DynamicArray * da ){
     assert(DynamicArray_size(da) > 0);
 
@@ -268,12 +267,19 @@ double DynamicArray_sum ( const DynamicArray * da ){
 DynamicArray * DynamicArray_range ( double a, double b, double step){
     DynamicArray * re = DynamicArray_new();
     double count = a;
-    while(count <= b){
-        DynamicArray_push(re, count);
-        count += step;
-        // printf("count:%lf, step:%lf\n", count, step);
-    }
-    // DynamicArray_print_debug_info(re);
+    if(b >= a && step >= 0){
+        while(count <= b){
+            DynamicArray_push(re, count);
+            count += step;
+            // printf("count:%lf, step:%lf\n", count, step);
+        }
+    }else if(b < a && step <= 0) {//0, -1, -.1
+        while(count >= b){
+            DynamicArray_push(re, count);
+            count += step;
+            // printf("count:%lf, step:%lf\n", count, step); 
+        }
+    }else{return re;}
     return re;
 }
 
