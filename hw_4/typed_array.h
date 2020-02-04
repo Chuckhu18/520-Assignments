@@ -30,8 +30,8 @@ public:
     // Array operations
     void pop();
     void pop_front();
-    void push(ElementType value);
-    void push_front(ElementType value);
+    void push(const ElementType value);
+    void push_front(const ElementType value);
 
 private:
 
@@ -51,7 +51,7 @@ private:
 };
 
 template <typename ElementType>
-void TypedArray<ElementType>::pop(){
+void TypedArray<ElementType>::pop() {
     if (size() == 0)
         throw std::range_error("Cannot pop from an empty array");
     // double value = get(size()-1);
@@ -60,7 +60,7 @@ void TypedArray<ElementType>::pop(){
 }
 
 template <typename ElementType>
-void TypedArray<ElementType>::pop_front(){
+void TypedArray<ElementType>::pop_front() {
     if (size() == 0)
         throw std::range_error("Cannot pop from an empty array");
     // set(0, 0.0);
@@ -68,12 +68,12 @@ void TypedArray<ElementType>::pop_front(){
 }
 
 template <typename ElementType>
-void TypedArray<ElementType>::push(ElementType value) {
+void TypedArray<ElementType>::push(const ElementType value) {
     set(size(), value);
 }
 
 template <typename ElementType>
-void TypedArray<ElementType>::push_front(ElementType value) {
+void TypedArray<ElementType>::push_front(const ElementType value) {
     this->origin--;
     set(0, value);
 }
