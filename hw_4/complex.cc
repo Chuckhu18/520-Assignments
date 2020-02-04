@@ -1,5 +1,6 @@
 #include <math.h>
 #include "complex.h"
+#include "typed_array.h"
 
 double Complex::magnitude() const {
 

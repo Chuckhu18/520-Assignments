@@ -27,6 +27,12 @@ public:
     // Setters
     void set(int index, ElementType value);
 
+    // Array operations
+    void pop();
+    void pop_front();
+    void push(ElementType value);
+    void push_front(ElementType value);
+
 private:
 
     int capacity,
@@ -43,6 +49,35 @@ private:
     void extend_buffer(void);    
 
 };
+
+template <typename ElementType>
+void TypedArray<ElementType>::pop(){
+    if (size() == 0)
+        throw std::range_error("Cannot pop from an empty array");
+    // double value = get(size()-1);
+    // set(size()-1, 0.0);
+    this->end--;
+}
+
+template <typename ElementType>
+void TypedArray<ElementType>::pop_front(){
+    if (size() == 0)
+        throw std::range_error("Cannot pop from an empty array");
+    // set(0, 0.0);
+    this->origin++;
+}
+
+template <typename ElementType>
+void TypedArray<ElementType>::push(ElementType value) {
+    set(size(), value);
+}
+
+template <typename ElementType>
+void TypedArray<ElementType>::push_front(ElementType value) {
+    this->origin--;
+    set(0, value);
+}
+
 
 template <typename ElementType>
 TypedArray<ElementType>::TypedArray() {
@@ -182,3 +217,4 @@ void TypedArray<ElementType>::extend_buffer() {
 }
 
 #endif
+
