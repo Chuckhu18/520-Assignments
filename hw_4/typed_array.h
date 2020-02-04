@@ -32,6 +32,7 @@ public:
     void pop_front();
     void push(const ElementType value);
     void push_front(const ElementType value);
+    TypedArray concat(const TypedArray& a);
 
 private:
 
@@ -78,6 +79,17 @@ void TypedArray<ElementType>::push_front(const ElementType value) {
     set(0, value);
 }
 
+template <typename ElementType>
+TypedArray<ElementType> TypedArray<ElementType>::concat(const TypedArray<ElementType>& a) {
+    TypedArray<ElementType> arr;
+    for(int i=0; i< size(); i++)
+        arr.set(i,get(i));
+
+    for(int i=0; i<size(); i++)
+        arr.push(get(i));
+
+    return arr;
+}   
 
 template <typename ElementType>
 TypedArray<ElementType>::TypedArray() {
