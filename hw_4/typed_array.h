@@ -33,6 +33,7 @@ public:
     void push(const ElementType value);
     void push_front(const ElementType value);
     TypedArray concat(const TypedArray& a);
+    TypedArray reverse();
 
 private:
 
@@ -82,14 +83,26 @@ void TypedArray<ElementType>::push_front(const ElementType value) {
 template <typename ElementType>
 TypedArray<ElementType> TypedArray<ElementType>::concat(const TypedArray<ElementType>& a) {
     TypedArray<ElementType> arr;
-    for(int i=0; i< size(); i++)
+    for(int i=0; i < size(); i++)
         arr.set(i,get(i));
 
-    for(int i=0; i<size(); i++)
+    for(int i=0; i < size(); i++)
         arr.push(get(i));
 
     return arr;
 }   
+
+template <typename ElementType>
+TypedArray<ElementType> TypedArray<ElementType>::reverse() {
+    TypedArray<ElementType> temp;
+    for(int i=0; i < size(); i++)
+        temp.set(i,get(i));
+
+    for(int i=0; i < size(); i++)
+        set(size()-i-1,temp.get(i));
+
+    return *this;
+} 
 
 template <typename ElementType>
 TypedArray<ElementType>::TypedArray() {

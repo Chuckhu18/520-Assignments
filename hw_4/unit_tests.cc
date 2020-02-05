@@ -78,11 +78,21 @@ namespace {
         a.set(1,1);
         TypedArray<int> b = a.concat(a).concat(a); // yields a new array [0,1,0,1,0,1]
                                                     // Should leave a untouched.
-
         for(int i=0; i<b.size(); i++)
             std::cout<< "[" << b.get(i) << "] ";
         std::cout<<std::endl;
+    }
 
+    TEST(Array, Reverse) {
+        TypedArray<int> a;
+        for (int i=0;i<10;i++)
+            a.set(i,i);
+        
+        a.reverse();
+
+        for(int i=0; i<a.size(); i++)
+            std::cout<< "[" << a.get(i) << "] ";
+        std::cout<<std::endl;
     }
 
 }
