@@ -7,7 +7,8 @@ class Complex {
     public:
     Complex(double x, double y) : re(x), im(y) {}
     Complex(double a) : re(a), im(0) {};
-
+    double real();
+    double imaginary();
     double magnitude() const;
 
     private:

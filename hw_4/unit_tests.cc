@@ -77,7 +77,7 @@ namespace {
         a.set(0,0);
         a.set(1,1);
         TypedArray<int> b = a.concat(a).concat(a); // yields a new array [0,1,0,1,0,1]
-                                                    // Should leave a untouched.
+
         for(int i=0; i<b.size(); i++)
             std::cout<< "[" << b.get(i) << "] ";
         std::cout<<std::endl;
@@ -95,4 +95,14 @@ namespace {
         std::cout<<std::endl;
     }
 
+    TEST(Array, PlusOp) {
+        TypedArray<int> a;
+        a.set(0,0);
+        a.set(1,1);
+        TypedArray<int> b = a+a+a+a;
+
+        for(int i=0; i<b.size(); i++)
+            std::cout<< "[" << b.get(i) << "] ";
+        std::cout<<std::endl;
+    }
 }

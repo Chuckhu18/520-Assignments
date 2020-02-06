@@ -15,6 +15,8 @@ public:
 
     // Copy constructor
     TypedArray& operator=(const TypedArray& other);
+    TypedArray operator+(const TypedArray& other);
+
 
     // Destructor
     ~TypedArray();
@@ -84,10 +86,11 @@ template <typename ElementType>
 TypedArray<ElementType> TypedArray<ElementType>::concat(const TypedArray<ElementType>& a) {
     TypedArray<ElementType> arr;
     for(int i=0; i < size(); i++)
-        arr.set(i,get(i));
+        arr.set(i, safe_get(i));
 
-    for(int i=0; i < size(); i++)
-        arr.push(get(i));
+    for(int i=0; i < a.size(); i++)
+        // arr.push(safe_get(i));
+        arr.set(arr.size(),a.safe_get(i));
 
     return arr;
 }   
@@ -104,12 +107,21 @@ TypedArray<ElementType> TypedArray<ElementType>::reverse() {
     return *this;
 } 
 
+// Assignment operator: i.e TypedArray b = a+a means b = a.concat(a)
+template <typename ElementType>
+TypedArray<ElementType> TypedArray<ElementType>::operator+(const TypedArray<ElementType>& other) {
+    TypedArray<ElementType> a(*this);
+    // a = other;
+    // a.concat(other);
+    return a.concat(other);
+}
+
 template <typename ElementType>
 TypedArray<ElementType>::TypedArray() {
     buffer = new ElementType[INITIAL_CAPACITY]();
-    capacity = INITIAL_CAPACITY;    
+    capacity = INITIAL_CAPACITY;
     origin = capacity / 2;
-    end = origin;    
+    end = origin;
 }
 
 // Copy constructor: i.e TypedArray b(a) where a is a TypedArray
@@ -133,6 +145,7 @@ TypedArray<ElementType>& TypedArray<ElementType>::operator=(const TypedArray<Ele
     }
     return *this;
 }
+
 
 // Destructor
 template <typename ElementType>
