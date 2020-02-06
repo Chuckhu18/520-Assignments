@@ -105,4 +105,38 @@ namespace {
             std::cout<< "[" << b.get(i) << "] ";
         std::cout<<std::endl;
     }
+
+    TEST(Complex,Cong) {
+        Complex p(1,2);
+        Complex pp = p.conjugate();
+        std::cout<<"cong:"<<pp.real()<<pp.imaginary()<<"i"<<std::endl;
+    }
+
+    TEST(Complex, ComplexPlusOp){
+        Complex a(1,2);
+        Complex b(1,3);
+        Complex p = a + b;
+        std::cout<<"+Operator:"<<"re:"<<p.real()<<" im:"<<p.imaginary()<<"i"<<std::endl;
+    }
+
+    TEST(Complex, ComplexMultiOp){
+        Complex a(1,2);
+        Complex b(1,3);
+        Complex p = a * b;
+        std::cout<<"MultiOp:"<<"re:"<<p.real()<<" im:"<<p.imaginary()<<"i"<<std::endl;
+    }
+
+    TEST(Complex, CpxEqOp){
+        Complex a(1,2);
+        Complex b(1,4);
+        bool p = (a == b);
+        std::cout<<"CpxEqOp:"<<p<<std::endl;
+    }
+
+    TEST(Complex, CpxLsOp){
+        Complex a(1,2);
+        Complex b(1,3);
+        bool p = (a < b);
+        std::cout<<"CpxLsOp:"<<p<<std::endl;
+    }
 }
