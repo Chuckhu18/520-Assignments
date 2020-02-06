@@ -15,13 +15,15 @@ class Complex {
 
     Complex operator * (Complex const &obj);
 
+    // bool operator==(const Complex& a, const Complex& b);
+
     double magnitude() const;
 
     private:
     double re, im;
 }; 
 
-bool operator==(const Complex& a, const Complex& b);
+bool operator==( Complex& a,  Complex& b);
 bool operator<(const Complex& a, const Complex& b);
 
 #endif

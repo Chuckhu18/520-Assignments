@@ -26,8 +26,10 @@ Complex Complex::operator * (Complex const &obj) {
     return res; 
 } 
 
-bool operator==(const Complex& a, const Complex& b){
-    return a.magnitude() == b.magnitude();
+bool operator==(Complex& a,  Complex& b){
+    if(a.real() != b.real() || a.imaginary() != b.imaginary())
+        return false;
+    return true;
 }
 
 double Complex::magnitude() const {

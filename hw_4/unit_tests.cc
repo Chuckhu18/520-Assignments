@@ -128,7 +128,7 @@ namespace {
 
     TEST(Complex, CpxEqOp){
         Complex a(1,2);
-        Complex b(1,4);
+        Complex b(1,2);
         bool p = (a == b);
         std::cout<<"CpxEqOp:"<<p<<std::endl;
     }
