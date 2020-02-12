@@ -41,9 +41,8 @@ DB::Row DB::find(int key) const {
 }
 
 vector<DB::Row> DB::where(function<bool(const DB::Row)> f) const {
-
     vector<Row> rows;
-
+    
     for( auto [key, value] : _data ) {
         auto row = to_row(key,value);
         if ( f(row) == true ) {

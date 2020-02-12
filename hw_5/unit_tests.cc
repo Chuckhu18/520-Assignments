@@ -3,6 +3,7 @@
 #include <vector>
 #include <cctype>
 #include <numeric>      // std::accumulate
+#include "example.h"
 
 namespace {
 
@@ -186,6 +187,17 @@ namespace {
     a[5] = 34;
     cout << "a[3] = " << a[3] << "\n";
 
+  }
+
+  TEST(Example,Sort){
+    double mya[] = {3,-2,1};
+    vector<double> myvector (mya, mya+3);
+    sort_by_magnitude(myvector);
+
+    cout << "myvector contains:";
+    for (vector<double>::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+      cout << ' ' << *it;
+    cout << endl;
   }
 
 }
