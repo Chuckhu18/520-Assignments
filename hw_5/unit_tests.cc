@@ -200,5 +200,16 @@ namespace {
     cout << endl;
   }
 
+  TEST(Example,Prime){
+
+    vector<int> myvector = primes(30);
+
+    cout << "myvector contains:";
+    for (vector<int>::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+      cout << ' ' << *it;
+    cout << endl;
+  }
+  
+
 }
 

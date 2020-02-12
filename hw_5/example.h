@@ -9,6 +9,6 @@ void sort_by_magnitude(vector<double>& in);
 
 bool myfunction (int a,int b);
 
-vector<int> prines(int n);
+vector<int> primes(int n);
 
 #endif
