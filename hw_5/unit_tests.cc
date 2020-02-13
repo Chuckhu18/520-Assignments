@@ -82,5 +82,16 @@ namespace {
     }
   }
 
+  TEST(DB, Accumulate){
+    DB db;
+    db.creat_test_data(5);
+    for(int i=0; i<db.size(); i++){
+      DB::Row row = db.find(i);
+      cout << KEY(row)<<":"<<NAME(row)<<", "<<MASS(row)<<", "<<DISTANCE(row)<<endl;
+    }
+    double total_mass = db.accumulate([](DB::Row row) { return MASS(row); });
+    cout << "total mass:"<<total_mass<<endl;
+  }
+
 }
 

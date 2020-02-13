@@ -9,7 +9,13 @@ using namespace std;
 DB::DB() : _next_key(0) {}
 
 double DB::accumulate(function<double(const Row)> f) const{
-
+    double total_mass=0;
+    for(auto [key,value]: _data){
+        // Row row = to_row(key,value);
+        total_mass += f(to_row(key,value));
+    }
+    
+    return total_mass;
 }
 
 
