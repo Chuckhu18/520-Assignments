@@ -93,5 +93,17 @@ namespace {
     cout << "total mass:"<<total_mass<<endl;
   }
 
+  TEST(DB, Avg){
+    DB db;
+    db.creat_test_data(5);
+    for(int i=0; i<db.size(); i++){
+      DB::Row row = db.find(i);
+      cout << KEY(row)<<":"<<NAME(row)<<", "<<MASS(row)<<", "<<DISTANCE(row)<<endl;
+    }
+
+    cout<<"avg mass" << db.average_mass() <<endl;
+    cout<<"avg distance" << db.average_distance() <<endl;
+  }
+
 }
 

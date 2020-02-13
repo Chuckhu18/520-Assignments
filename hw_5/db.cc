@@ -8,6 +8,30 @@ using namespace std;
 
 DB::DB() : _next_key(0) {}
 
+double DB::average_mass() const{
+    double total_mass = 0;
+    double avg_mass = 0;
+    for(auto [key,value]: _data){
+        Row row = to_row(key,value);
+        total_mass += MASS(row);
+    }
+    avg_mass = total_mass/size();
+
+    return avg_mass;
+}
+
+double DB::average_distance() const{
+    double total = 0;
+    double avg = 0;
+    for(auto [key,value]: _data){
+        Row row = to_row(key,value);
+        total += DISTANCE(row);
+    }
+    avg = total/size();
+
+    return avg;
+}
+
 double DB::accumulate(function<double(const Row)> f) const{
     double total_mass=0;
     for(auto [key,value]: _data){

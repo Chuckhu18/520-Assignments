@@ -30,6 +30,8 @@ class DB {
     DB &creat_test_data(int n);
     int size() const;
     double accumulate(function<double(const Row)> f) const;
+    double average_mass() const;
+    double average_distance() const;
 
   private:
 
