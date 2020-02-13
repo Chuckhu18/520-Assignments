@@ -1,14 +1,17 @@
-#ifndef __DB_H
-#define __DB_H
+#ifndef __EXAMPLE
+#define __EXAMPLE
 #include <iostream> 
 #include <vector>
+#include <tuple>
 
 using namespace std;
 
 void sort_by_magnitude(vector<double>& in);
 
-bool myfunction (int a,int b);
+bool compare(int a,int b);
 
 vector<int> primes(int n);
+
+vector<tuple<int,int>> twins(vector<int> nums);
 
 #endif

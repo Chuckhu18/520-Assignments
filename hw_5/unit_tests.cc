@@ -201,15 +201,31 @@ namespace {
   }
 
   TEST(Example,Prime){
+    int n = 100;
+    vector<int> myvector = primes(n);
 
-    vector<int> myvector = primes(30);
-
-    cout << "myvector contains:";
-    for (vector<int>::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+    cout << "primes less than "<< n <<":";
+    for (auto it=myvector.begin(); it!=myvector.end(); ++it)
       cout << ' ' << *it;
     cout << endl;
   }
   
+  TEST(Example,Tuple){
+    int n = 1000;
+    vector<int> v = primes(n);
+    
+    tuple<int, int> temp;
+    cout << "twin primes less than "<< n <<":";
+    vector<tuple<int,int>> twin_p = twins(v);
+
+    cout<<'[';
+    for ( const auto& i : twin_p ) {
+      cout <<'('<< get<0>(i) <<','<< get<1>(i)<<')'<< ',';
+    }
+    cout<<']'<<endl;
+
+  }
+
 
 }
 
