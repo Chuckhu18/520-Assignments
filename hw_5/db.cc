@@ -6,7 +6,12 @@ using namespace std;
 DB::DB() : _next_key(0) {}
 
 DB &DB::insert(const string name, double mass, double distance) {
-
+    for(auto [i,j]: _data){
+        Row row = to_row(i,j);
+        if (NAME(row) == name)
+            throw runtime_error("Name already exists");
+    }
+    
     int key = _next_key++;
     _data[key] = make_tuple(name, mass, distance);
     return *this;
@@ -42,7 +47,7 @@ DB::Row DB::find(int key) const {
 
 vector<DB::Row> DB::where(function<bool(const DB::Row)> f) const {
     vector<Row> rows;
-    
+
     for( auto [key, value] : _data ) {
         auto row = to_row(key,value);
         if ( f(row) == true ) {

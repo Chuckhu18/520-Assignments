@@ -18,7 +18,6 @@ class DB {
 
   public:
 
-    
     typedef tuple<int,string,double,double> Row;
 
     DB();
