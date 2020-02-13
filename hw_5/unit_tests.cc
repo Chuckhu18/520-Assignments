@@ -47,7 +47,7 @@ namespace {
 
   }
 
-  TEST(DB, insert){
+  TEST(DB, Insert){
     DB db;
     db.insert("Mars", 1.234, 2.345)
       .insert("Jupiter", 123.232, 23123.23)
@@ -56,6 +56,29 @@ namespace {
       db.insert("Mars", 1.1111, 2.2222);
     } catch (runtime_error e) {
       ASSERT_STREQ(e.what(),"Name already exists");
+    }
+  }
+
+  TEST(DB, FindbyName){
+    DB db;
+    db.insert("Mars", 1.234, 2.345)
+      .insert("Earth",0,0);
+    try{
+      db.find_by_name("Mercury");
+      FAIL();
+    } catch (runtime_error e) {
+      ASSERT_STREQ(e.what(), "Could not find row by name");
+    }
+  }
+
+  TEST(DB, CreateTestData){
+    DB db;
+    db.creat_test_data(100);
+    cout<<"size: "<< db.size() <<endl;
+
+    for(int i=0; i<db.size(); i++){
+      DB::Row row = db.find(i);
+      cout << KEY(row)<<":"<<NAME(row)<<", "<<MASS(row)<<", "<<DISTANCE(row)<<endl;
     }
   }
 

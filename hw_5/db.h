@@ -26,6 +26,11 @@ class DB {
     Row find(int) const;
     vector<Row> where(function<bool(const Row)> f) const;
 
+    Row find_by_name(const string) const;
+    DB &creat_test_data(int n);
+    int size() const;
+    double accumulate(function<double(const Row)> f) const;
+
   private:
 
     typedef tuple<string,double,double> Value;
@@ -34,5 +39,7 @@ class DB {
     int _next_key;
 
 };
+
+string randomName();
 
 #endif
