@@ -1,8 +1,23 @@
 #ifndef _STOPWATCH_H
 #define _STOPWATCH_H
 
+#include <chrono>
+#include <ratio>
+
+using namespace std::chrono;
+
+
 class Stopwatch {
     public:
+        typedef enum {RUNNING, 
+                      STOPPING,
+                      UNINITIALIZED} status_type;
+
+        typedef duration<double> seconds_type;
+        typedef duration<double, std::nano> nanoseconds_type;
+        typedef duration<double, std::milli> milliseconds_type;
+        typedef duration<double, std::ratio<60>> minutes_type;
+
         void start();              // starts the timer
         void stop();               // stops the timer
         void reset();              // sets stopwatch to zero
@@ -11,8 +26,12 @@ class Stopwatch {
         double get_milliseconds(); // number of milliseconds counted, as a double
         double get_nanoseconds();  // number of nanoseconds counted, as a double
 
-    private:
-        int minites;
+        status_type status = UNINITIALIZED;
+
+    // private:
+        high_resolution_clock::time_point _time_start;
+        high_resolution_clock::time_point _time_end;
+        // double _duration = 0;
 
 };
 
