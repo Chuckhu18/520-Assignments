@@ -29,7 +29,7 @@ class Stopwatch {
         status_type status;
         // int status = 0;
 
-    // private:
+    private:
         high_resolution_clock::time_point _time_start;
         high_resolution_clock::time_point _time_end;
         high_resolution_clock::duration _duration;

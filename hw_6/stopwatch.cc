@@ -30,23 +30,33 @@ void Stopwatch::reset(){
 }
 
 double Stopwatch::get_minutes(){
+    if(status == UNINITIALIZED)
+        return 0.0;
+    if(status == RUNNING)
+        return minutes_type(_duration + high_resolution_clock::now() - _time_start).count();
     return minutes_type(_duration).count();
 }
 
 double Stopwatch::get_seconds(){
-    if(status == UNINITIALIZED){
+    if(status == UNINITIALIZED)
         return 0.0;
-    }
-    if(status = RUNNING)
-        return seconds_type(high_resolution_clock::now() - _time_start).count();
-
+    if(status == RUNNING)
+        return seconds_type(_duration + high_resolution_clock::now() - _time_start).count();
     return seconds_type(_duration).count();
 }
 
 double Stopwatch::get_milliseconds(){
+    if(status == UNINITIALIZED)
+        return 0.0;
+    if(status == RUNNING)
+        return milliseconds_type(_duration + high_resolution_clock::now() - _time_start).count();
     return milliseconds_type(_duration).count();
 }
 
 double Stopwatch::get_nanoseconds(){
+    if(status == UNINITIALIZED)
+        return 0.0;
+    if(status == RUNNING)
+        return nanoseconds_type(_duration + high_resolution_clock::now() - _time_start).count();
     return nanoseconds_type(_duration).count();
 }

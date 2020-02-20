@@ -16,13 +16,16 @@ TEST(SELF, STOPWATCH){
     cout << w.get_nanoseconds() << "ns = "; //about 1.5e9 ns
     cout << w.get_minutes() << "m\n"; // minutes
     SLEEP;
-    cout << w.get_seconds() << "s\n"; // still about 1.5
+    cout << w.get_nanoseconds() << "ns\n"; // still about 1.5
 
     w.start();
     SLEEP;
+    cout << w.get_nanoseconds() << "ns\n"; // 3s
+    SLEEP;
+    SLEEP;
     w.stop();
-    cout << w.get_seconds() << "s\n"; // about 3.0
+    cout << w.get_nanoseconds() << "ns\n"; // about 6.0s
 
     w.reset();
-    cout << w.get_seconds() << "s\n"; // 0.0
+    cout << w.get_nanoseconds() << "ns\n"; // 0.0
 }
