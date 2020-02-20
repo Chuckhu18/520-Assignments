@@ -6,7 +6,6 @@
 
 using namespace std::chrono;
 
-
 class Stopwatch {
     public:
         typedef enum {RUNNING, 
@@ -18,6 +17,7 @@ class Stopwatch {
         typedef duration<double, std::milli> milliseconds_type;
         typedef duration<double, std::ratio<60>> minutes_type;
 
+        Stopwatch();
         void start();              // starts the timer
         void stop();               // stops the timer
         void reset();              // sets stopwatch to zero
@@ -26,12 +26,13 @@ class Stopwatch {
         double get_milliseconds(); // number of milliseconds counted, as a double
         double get_nanoseconds();  // number of nanoseconds counted, as a double
 
-        status_type status = UNINITIALIZED;
+        status_type status;
+        // int status = 0;
 
     // private:
         high_resolution_clock::time_point _time_start;
         high_resolution_clock::time_point _time_end;
-        // double _duration = 0;
+        high_resolution_clock::duration _duration;
 
 };
 
