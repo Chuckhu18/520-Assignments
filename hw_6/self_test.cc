@@ -39,12 +39,14 @@ TEST(SELF, Process) {
     elma::Manager m;
     
     RandomProcess r("random numbers");
-    // Filter f("filter");
+    Filter f("filter");
     elma::Channel link("link");
 
     m.schedule(r, 1_ms)
-    // .schedule(f, 1_ms)
-    .add_channel(link)
-    .init()
-    .run(100_ms);
+     .schedule(f, 1_ms)
+     .add_channel(link)
+     .init()
+     .run(100_ms);
+     
+     cout << "Average of lastest 10 values is " << f.value() <<endl;
 }

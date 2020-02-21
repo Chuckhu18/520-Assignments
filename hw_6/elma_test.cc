@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "elma/elma.h"
-
+/*
 namespace {
 
     using namespace elma;
@@ -52,3 +52,4 @@ namespace {
     }
 
 }
+*/
