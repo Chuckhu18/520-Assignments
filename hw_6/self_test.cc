@@ -4,6 +4,7 @@
 #include "stopwatch.h"
 #include "random_process.h"
 #include "filter.h"
+#include "integrator.h"
 
 #define SLEEP std::this_thread::sleep_for(std::chrono::milliseconds(1500))
 
@@ -33,7 +34,7 @@ TEST(SELF, STOPWATCH){
     w.reset();
     cout << w.get_nanoseconds() << "ns\n"; // 0.0
 }
-*/
+
 
 TEST(SELF, Process) {
     elma::Manager m;
@@ -50,3 +51,12 @@ TEST(SELF, Process) {
      
      cout << "Average of lastest 10 values is " << f.value() <<endl;
 }
+
+TEST(SELF, Integrator){
+
+}
+
+TEST(SELF, Derivative){
+
+}
+*/

@@ -8,14 +8,20 @@ using namespace elma;
 
 class Integrator : public Process {
     public:
-        Integrator(string name) : Process(name){}
+        Integrator(string name) : Process(name){
+            _sum = 0;
+        }
 
         void init(){}
         void start(){}
         void update();
         void stop(){}
 
+        double value();
+
     private:
+        double _sum;
+        double _current_val;
 
 };
 
