@@ -5,7 +5,7 @@ namespace {
 
     using namespace std::chrono; 
     using namespace elma;   
-
+/*
     TEST(TIME,HIGH_RES) {
        
         high_resolution_clock::time_point t = high_resolution_clock::now();
@@ -30,5 +30,5 @@ namespace {
         ASSERT_GE((t2-t1).count(), 10 * 1000 * 1000);
 
     }
-
+*/
 }
