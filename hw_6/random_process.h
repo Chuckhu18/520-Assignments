@@ -8,14 +8,16 @@
 using namespace std;
 using namespace elma;
 
+
+
 class RandomProcess : public Process {
     public:
-        RandomProcess(string name) : Process(name){}
+        RandomProcess(string name) : Process(name){
+            srand(time(NULL));
+        }
         // srand(time(NULL));
-        RandomProcess();
-        void init();
+        void init(){}
         void start(){}
-
         void update();
 
         void stop(){}

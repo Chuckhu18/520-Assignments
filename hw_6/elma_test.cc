@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "elma/elma.h"
-/*
+
 namespace {
 
     using namespace elma;
@@ -22,7 +22,7 @@ namespace {
       m.schedule(p, 1_ms)    // process updates every 1ms
         .init()              // initialize all processes
         .run(10_ms);         // run for 1s
-
+      
     }
 
     class MyProcess : public elma::Process {
@@ -43,13 +43,12 @@ namespace {
         MyProcess p("A"), q("B");
 
         m.schedule(p, 1_ms)
-         .schedule(q, 5_ms)
+        //  .schedule(q, 5_ms)
          .init()
          .run(11_ms);
 
-        // ASSERT_EQ(p.num_updates(), 10);
-        ASSERT_EQ(q.num_updates(), 2);      
+        ASSERT_EQ(p.num_updates(), 10);
+        // ASSERT_EQ(q.num_updates(), 2);      
     }
 
 }
-*/

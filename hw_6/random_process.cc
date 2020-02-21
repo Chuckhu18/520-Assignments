@@ -1,12 +1,14 @@
 #include "random_process.h"
 
 
-// RandomProcess::RandomProcess(string name) : Process(name){    
-//     srand(time(NULL));
-// }
-RandomProcess::RandomProcess(){    
+/*
+RandomProcess::RandomProcess(string name) : Process(name){    
     srand(time(NULL));
 }
+RandomProcess::RandomProcess(){    
+    srand(time(NULL));
+}*/
+
 
 double RandomProcess::send_rand(){
     _rand_double = ((double) rand() / (RAND_MAX));// in the range 0-1
