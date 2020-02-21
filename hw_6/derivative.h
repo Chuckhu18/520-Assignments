@@ -10,6 +10,7 @@ class Derivative : public Process {
     public:
         Derivative(string name) : Process(name){
             _sum = 0;
+            _current_x=0;
         }
 
         void init(){}
