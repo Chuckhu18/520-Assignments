@@ -1,5 +1,5 @@
-#ifndef _ROBOT_H
-#define _ROBOT_H
+// #ifndef _ROBOT_H
+// #define _ROBOT_H
 
 #include <iostream>
 #include "elma/elma.h"
@@ -54,4 +54,4 @@ class Robot : public StateMachine{
 };
 
 
-#endif
+// #endif
