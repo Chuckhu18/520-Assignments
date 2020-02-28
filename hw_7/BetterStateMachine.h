@@ -41,6 +41,7 @@ class BetterStateMachine : public StateMachine{
 
         set<string> states;
 
+        // for(int i =0; i<_transitions.size(); i++){}
         for (auto i : _transitions) {
             states.insert(i.from().name());
             states.insert(i.to().name());
