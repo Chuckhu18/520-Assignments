@@ -4,29 +4,32 @@
     "description": "Replace this string with a description",
     "shape": [
       { "x": -10, "y": 10 },
-      { "x": 10, "y": 10 },
-      { "x": 10, "y": 2 },
-      { "x": 12, "y": 2 },
-      { "x": 12, "y": 6 },
-      { "x": 16, "y": 6 },
-      { "x": 16, "y": 4 },
-      { "x": 14, "y": 4 },
-      { "x": 14, "y": -4},
-      { "x": 16, "y": -4 },
-      { "x": 16, "y": -6 },
-      { "x": 12, "y": -6 },
-      { "x": 12, "y": -2 },
-      { "x": 10, "y": -2 },
-      { "x": 10, "y": -10 },
+      { "x": 10, "y": 0 },
       { "x": -10, "y": -10 },
-      { "x": -9, "y": 0 }
+      { "x": -6, "y": 0 }
     ],
     "friction": {
-      "collision": 5,
-      "linear": 40,
-      "rotational": 600
+      "collision": 0.5,
+      "linear": 10,
+      "rotational": 200
     },
-    "sensors": [],
-    "mass": 1,    
+    "sensors": [
+      { 
+        "type": "range",
+        "location": { "x": 12, "y": 0 },
+        "direction": 0
+      },
+      { 
+          "type": "range",
+          "location": { "x": -8, "y": 12 },
+          "direction": 1.57
+      } ,
+      { 
+          "type": "range",
+          "location": { "x": -8, "y": -12 },
+          "direction": -1.57
+      }  
+    ],
+    "mass": 0.25,    
     "controller": "lib/my_robot.so"
 }
