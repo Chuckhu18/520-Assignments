@@ -13,7 +13,7 @@ class MovingForward : public State, public AgentInterface {
     public:
     void entry(const Event& e) {}
     void during() {
-        track_velocity(4,0);
+        track_velocity(3,0);
         cout << "f: " << sensor_value(0) << endl;
         if ( sensor_value(0) < 25 ){
             cout<<" emit Rotate"<<endl;
@@ -31,12 +31,12 @@ class Rotating : public State, public AgentInterface {
     public:
     void entry(const Event& e) {
         if (sensor_value(1) > sensor_value(2)){
-                rate = 1.8;
-            }else{ rate = -1.8;}
+                rate = 1.9;
+            }else{ rate = -1.9;}
         }
 
     void during() { 
-        track_velocity(0,rate);  
+        track_velocity(0.5,rate);  
         cout << "r0:" << sensor_value(0) << ",r1:"<<sensor_value(1)<<",r2:"<<sensor_value(2)<<endl;
         if ( sensor_value(0) > 50 ) {
             cout<<" emit forward"<<endl;
